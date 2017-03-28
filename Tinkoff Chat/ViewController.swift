@@ -38,71 +38,9 @@ UINavigationControllerDelegate {
         print("Сохранение данных профиля")
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        //*************
-        print(#function)
-        print(userName.description)
-        print(userDescription.description)
-        print(userProfileImageView.description)
-        print(colorText.description)
-        //*************
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //*************
-        print(#function)
-        print(userName.description)
-        print(userDescription.description)
-        print(userProfileImageView.description)
-        print(colorText.description)
-        //*************
-
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        //*************
-        print(#function)
-        print(userName.description)
-        print(userDescription.description)
-        print(userProfileImageView.description)
-        print(colorText.description)
-        //*************
-    }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        //*************
-        print(#function)
-        print(userName.description)
-        print(userDescription.description)
-        print(userProfileImageView.description)
-        print(colorText.description)
-        //*************
-    }
-    
-    deinit {
-        //*************
-        print(#function)
-        print(userName.description)
-        print(userDescription.description)
-        print(userProfileImageView.description)
-        print(colorText.description)
-        //*************
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //*************
-        print(#function)
-        print(userName.description)
-        print(userDescription.description)
-        print(userProfileImageView.description)
-        print(colorText.description)
-        //*************
         userName.delegate = self
         
         userName.returnKeyType = .done
