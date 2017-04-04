@@ -27,6 +27,7 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
         
         tableView.delegate = self
         
+               
         self.dataChat.append(Chat(name:"Vlad", date: "", lastMessage: Message(message:"Hello World"), isOnline: true, dateLastMessage: 1000, isRead: false ))
         
         self.dataChat.append(Chat(name:"Vlad", date: "", lastMessage: Message(message:"I am student"), isOnline: false, dateLastMessage: 30, isRead: false ))

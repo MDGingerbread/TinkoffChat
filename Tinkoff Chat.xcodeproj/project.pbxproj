@@ -18,6 +18,9 @@
 		844B85151E6EBAB300473DFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844B85131E6EBAB300473DFB /* Main.storyboard */; };
 		844B85171E6EBAB300473DFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844B85161E6EBAB300473DFB /* Assets.xcassets */; };
 		844B851A1E6EBAB300473DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844B85181E6EBAB300473DFB /* LaunchScreen.storyboard */; };
+		84F1955D1E90FC01008345C4 /* ConversationCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1955C1E90FC01008345C4 /* ConversationCellConfiguration.swift */; };
+		84F195601E9111FC008345C4 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1955F1E9111FB008345C4 /* GCDDataManager.swift */; };
+		84F195621E911C95008345C4 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F195611E911C95008345C4 /* OperationDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		844B85161E6EBAB300473DFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		844B85191E6EBAB300473DFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		844B851B1E6EBAB300473DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84F1955C1E90FC01008345C4 /* ConversationCellConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCellConfiguration.swift; sourceTree = "<group>"; };
+		84F1955F1E9111FB008345C4 /* GCDDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
+		84F195611E911C95008345C4 /* OperationDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +58,7 @@
 			children = (
 				8426E4FB1E89AB9E00774A06 /* ConversationsListViewController.swift */,
 				8426E5041E8A6C5600774A06 /* ConversationViewController.swift */,
+				844B85111E6EBAB300473DFB /* ViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -100,18 +107,44 @@
 		844B850E1E6EBAB300473DFB /* Tinkoff Chat */ = {
 			isa = PBXGroup;
 			children = (
+				84F195631E911CCE008345C4 /* App */,
+				84F1955E1E9111D9008345C4 /* SaveSettings */,
+				84BF5A621E90FA02003E2063 /* Protocols */,
 				8426E5081E8AB76400774A06 /* Helpers */,
 				8426E5011E8A536900774A06 /* View */,
 				8426E5001E8A535F00774A06 /* Model */,
 				8426E4FF1E8A534B00774A06 /* Controller */,
-				844B850F1E6EBAB300473DFB /* AppDelegate.swift */,
-				844B85111E6EBAB300473DFB /* ViewController.swift */,
 				844B85131E6EBAB300473DFB /* Main.storyboard */,
 				844B85161E6EBAB300473DFB /* Assets.xcassets */,
 				844B85181E6EBAB300473DFB /* LaunchScreen.storyboard */,
 				844B851B1E6EBAB300473DFB /* Info.plist */,
 			);
 			path = "Tinkoff Chat";
+			sourceTree = "<group>";
+		};
+		84BF5A621E90FA02003E2063 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				84F1955C1E90FC01008345C4 /* ConversationCellConfiguration.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		84F1955E1E9111D9008345C4 /* SaveSettings */ = {
+			isa = PBXGroup;
+			children = (
+				84F1955F1E9111FB008345C4 /* GCDDataManager.swift */,
+				84F195611E911C95008345C4 /* OperationDataManager.swift */,
+			);
+			name = SaveSettings;
+			sourceTree = "<group>";
+		};
+		84F195631E911CCE008345C4 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				844B850F1E6EBAB300473DFB /* AppDelegate.swift */,
+			);
+			name = App;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -188,7 +221,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8426E4FE1E89AD7400774A06 /* ConversationTableViewCell.swift in Sources */,
+				84F1955D1E90FC01008345C4 /* ConversationCellConfiguration.swift in Sources */,
+				84F195601E9111FC008345C4 /* GCDDataManager.swift in Sources */,
 				844B85121E6EBAB300473DFB /* ViewController.swift in Sources */,
+				84F195621E911C95008345C4 /* OperationDataManager.swift in Sources */,
 				8426E5051E8A6C5600774A06 /* ConversationViewController.swift in Sources */,
 				8426E5031E8A539700774A06 /* Message.swift in Sources */,
 				844B85101E6EBAB300473DFB /* AppDelegate.swift in Sources */,
@@ -317,6 +353,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AUAPM83487;
 				INFOPLIST_FILE = "Tinkoff Chat/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.darkside.Tinkoff-Chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -330,6 +367,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AUAPM83487;
 				INFOPLIST_FILE = "Tinkoff Chat/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "ru.darkside.Tinkoff-Chat";
 				PRODUCT_NAME = "$(TARGET_NAME)";
