@@ -205,7 +205,6 @@ UINavigationControllerDelegate {
         
         imagePicker.allowsEditing = true
 
-        
         present(imagePicker,animated: true,completion: nil)
     }
     

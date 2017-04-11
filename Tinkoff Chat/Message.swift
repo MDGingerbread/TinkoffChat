@@ -11,21 +11,17 @@ import Foundation
 
 
 class Message {
-    
     var message: String? = nil
- 
-    init(message:String) {
-        
+    var fromTo: Int = 0
+    
+    init(message:String, fromTo: Int) {
         self.message = message
-        
+        self.fromTo = fromTo
     }
     
-    init() {
-    
-    }
+    init() {}
     
     func getMessage()  -> String {
-        
         if let message = self.message {
             return message
         } else {
@@ -43,19 +39,19 @@ class Chat: NSObject {
     
     var date: String?
     
+    var userID: String?
+    
     var isOnline: Bool = false
     
     var isRead: Bool = false
     
     var dateLastMessage: Date?
     
-    var lastMessage: Message = Message(message: "")
+    var lastMessage: Message = Message(message: "", fromTo:1)
     
-    init(name:String, date: String, lastMessage: Message, isOnline: Bool, dateLastMessage: Double, isRead: Bool) {
+    init(name:String, lastMessage: Message, isOnline: Bool, dateLastMessage: Double, isRead: Bool, userID: String) {
         
         self.name = name
-        
-        self.date = date
         
         self.lastMessage = lastMessage
         
@@ -64,6 +60,8 @@ class Chat: NSObject {
         self.dateLastMessage = Date(timeIntervalSinceNow:  (-1) * dateLastMessage)
         
         self.isRead = isRead
+        
+        self.userID = userID
     }
 
     

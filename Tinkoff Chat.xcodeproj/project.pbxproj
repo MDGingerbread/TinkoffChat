@@ -18,6 +18,13 @@
 		844B85151E6EBAB300473DFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844B85131E6EBAB300473DFB /* Main.storyboard */; };
 		844B85171E6EBAB300473DFB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 844B85161E6EBAB300473DFB /* Assets.xcassets */; };
 		844B851A1E6EBAB300473DFB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 844B85181E6EBAB300473DFB /* LaunchScreen.storyboard */; };
+		844E95111E954FA600C0350C /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844E95101E954FA600C0350C /* Connection.swift */; };
+		8465F17F1E9848F200D6E0F4 /* MultipeerCommunicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8465F17E1E9848F200D6E0F4 /* MultipeerCommunicator.swift */; };
+		84CE1B771E9D5E51003EFE3A /* CommunicatorDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CE1B761E9D5E51003EFE3A /* CommunicatorDelegate.swift */; };
+		84CE1B791E9D5E77003EFE3A /* CommunicationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CE1B781E9D5E77003EFE3A /* CommunicationManagerDelegate.swift */; };
+		84CE1B7B1E9D5EA0003EFE3A /* Communicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CE1B7A1E9D5EA0003EFE3A /* Communicator.swift */; };
+		84CE1B7D1E9D657A003EFE3A /* ChatFromMessageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CE1B7C1E9D657A003EFE3A /* ChatFromMessageViewCell.swift */; };
+		84D9AAF11E97914E00DB6E21 /* CommunicationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84D9AAF01E97914E00DB6E21 /* CommunicationManager.swift */; };
 		84F1955D1E90FC01008345C4 /* ConversationCellConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1955C1E90FC01008345C4 /* ConversationCellConfiguration.swift */; };
 		84F195601E9111FC008345C4 /* GCDDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F1955F1E9111FB008345C4 /* GCDDataManager.swift */; };
 		84F195621E911C95008345C4 /* OperationDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F195611E911C95008345C4 /* OperationDataManager.swift */; };
@@ -37,6 +44,13 @@
 		844B85161E6EBAB300473DFB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		844B85191E6EBAB300473DFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		844B851B1E6EBAB300473DFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		844E95101E954FA600C0350C /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		8465F17E1E9848F200D6E0F4 /* MultipeerCommunicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipeerCommunicator.swift; sourceTree = "<group>"; };
+		84CE1B761E9D5E51003EFE3A /* CommunicatorDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicatorDelegate.swift; sourceTree = "<group>"; };
+		84CE1B781E9D5E77003EFE3A /* CommunicationManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationManagerDelegate.swift; sourceTree = "<group>"; };
+		84CE1B7A1E9D5EA0003EFE3A /* Communicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Communicator.swift; sourceTree = "<group>"; };
+		84CE1B7C1E9D657A003EFE3A /* ChatFromMessageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatFromMessageViewCell.swift; sourceTree = "<group>"; };
+		84D9AAF01E97914E00DB6E21 /* CommunicationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunicationManager.swift; sourceTree = "<group>"; };
 		84F1955C1E90FC01008345C4 /* ConversationCellConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCellConfiguration.swift; sourceTree = "<group>"; };
 		84F1955F1E9111FB008345C4 /* GCDDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDDataManager.swift; sourceTree = "<group>"; };
 		84F195611E911C95008345C4 /* OperationDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OperationDataManager.swift; sourceTree = "<group>"; };
@@ -76,6 +90,7 @@
 			children = (
 				8426E4FD1E89AD7400774A06 /* ConversationTableViewCell.swift */,
 				8426E5061E8AB37500774A06 /* ChatMessageViewCell.swift */,
+				84CE1B7C1E9D657A003EFE3A /* ChatFromMessageViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -108,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				84F195631E911CCE008345C4 /* App */,
+				84CE1B751E9D5E20003EFE3A /* MultipeerConnect */,
 				84F1955E1E9111D9008345C4 /* SaveSettings */,
 				84BF5A621E90FA02003E2063 /* Protocols */,
 				8426E5081E8AB76400774A06 /* Helpers */,
@@ -118,6 +134,7 @@
 				844B85161E6EBAB300473DFB /* Assets.xcassets */,
 				844B85181E6EBAB300473DFB /* LaunchScreen.storyboard */,
 				844B851B1E6EBAB300473DFB /* Info.plist */,
+				844E95101E954FA600C0350C /* Connection.swift */,
 			);
 			path = "Tinkoff Chat";
 			sourceTree = "<group>";
@@ -126,8 +143,20 @@
 			isa = PBXGroup;
 			children = (
 				84F1955C1E90FC01008345C4 /* ConversationCellConfiguration.swift */,
+				84CE1B761E9D5E51003EFE3A /* CommunicatorDelegate.swift */,
+				84CE1B781E9D5E77003EFE3A /* CommunicationManagerDelegate.swift */,
+				84CE1B7A1E9D5EA0003EFE3A /* Communicator.swift */,
 			);
 			name = Protocols;
+			sourceTree = "<group>";
+		};
+		84CE1B751E9D5E20003EFE3A /* MultipeerConnect */ = {
+			isa = PBXGroup;
+			children = (
+				84D9AAF01E97914E00DB6E21 /* CommunicationManager.swift */,
+				8465F17E1E9848F200D6E0F4 /* MultipeerCommunicator.swift */,
+			);
+			name = MultipeerConnect;
 			sourceTree = "<group>";
 		};
 		84F1955E1E9111D9008345C4 /* SaveSettings */ = {
@@ -223,13 +252,20 @@
 				8426E4FE1E89AD7400774A06 /* ConversationTableViewCell.swift in Sources */,
 				84F1955D1E90FC01008345C4 /* ConversationCellConfiguration.swift in Sources */,
 				84F195601E9111FC008345C4 /* GCDDataManager.swift in Sources */,
+				84CE1B7B1E9D5EA0003EFE3A /* Communicator.swift in Sources */,
 				844B85121E6EBAB300473DFB /* ViewController.swift in Sources */,
 				84F195621E911C95008345C4 /* OperationDataManager.swift in Sources */,
 				8426E5051E8A6C5600774A06 /* ConversationViewController.swift in Sources */,
 				8426E5031E8A539700774A06 /* Message.swift in Sources */,
+				84CE1B771E9D5E51003EFE3A /* CommunicatorDelegate.swift in Sources */,
+				844E95111E954FA600C0350C /* Connection.swift in Sources */,
 				844B85101E6EBAB300473DFB /* AppDelegate.swift in Sources */,
 				8426E5071E8AB37500774A06 /* ChatMessageViewCell.swift in Sources */,
+				84CE1B7D1E9D657A003EFE3A /* ChatFromMessageViewCell.swift in Sources */,
+				8465F17F1E9848F200D6E0F4 /* MultipeerCommunicator.swift in Sources */,
 				8426E4FC1E89AB9E00774A06 /* ConversationsListViewController.swift in Sources */,
+				84CE1B791E9D5E77003EFE3A /* CommunicationManagerDelegate.swift in Sources */,
+				84D9AAF11E97914E00DB6E21 /* CommunicationManager.swift in Sources */,
 				8426E50A1E8AB77000774A06 /* Data.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

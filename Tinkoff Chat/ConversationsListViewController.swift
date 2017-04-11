@@ -9,7 +9,7 @@
 import UIKit
 
 
-class ConversationsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ConversationsListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CommunicationManagerDelegate, ConversationViewControllerDelegate {
 
     let cellId = "CellId"
     
@@ -17,53 +17,62 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
     
     var dataHistory = [Chat]()
     
+    var arrayUsers = [String: Chat]()
+    
+    var arrayUsersAtIndexPath = [String]()
+    
+    let communicationManager = CommunicationManager.getInstance()
+    
+    var userIDName: String?
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         tableView.dataSource = self
-        
         tableView.delegate = self
-        
-               
-        self.dataChat.append(Chat(name:"Vlad", date: "", lastMessage: Message(message:"Hello World"), isOnline: true, dateLastMessage: 1000, isRead: false ))
-        
-        self.dataChat.append(Chat(name:"Vlad", date: "", lastMessage: Message(message:"I am student"), isOnline: false, dateLastMessage: 30, isRead: false ))
-        
-        self.dataChat.append(Chat(name:"Vlad", date: "", lastMessage: Message(message:"I am from Russia"), isOnline: false, dateLastMessage: 20, isRead: true ))
-        
-        self.dataChat.append(Chat(name:"Vlad", date: "", lastMessage: Message(message: "Gread Britan is the capital of Great Britania"), isOnline: true, dateLastMessage: 10 , isRead: true ))
-        
-        self.dataChat.append(Chat(name:"Vlad", date: "", lastMessage: Message(), isOnline: true, dateLastMessage: 400, isRead: true ) )
-        
-        self.dataChat.append(Chat(name:"Vlad Denis", date: "", lastMessage: Message(message:"I am from Russia"), isOnline: false, dateLastMessage: 20, isRead: false ))
-        
-        self.dataChat.append(Chat(name:"Vlad Igor", date: "", lastMessage: Message(message: "Gread Britan is the capital of Great Britania"), isOnline: true, dateLastMessage: 10 , isRead: true ))
-        
-        self.dataChat.append(Chat(name:"Vlad Ivanov", date: "", lastMessage: Message(), isOnline: true, dateLastMessage: 400, isRead: true ) )
-        
-        self.dataChat.append(Chat(name:"Vlad Petrov", date: "", lastMessage: Message(message:"I am from Russia"), isOnline: false, dateLastMessage: 20, isRead: true ))
-        
-        self.dataChat.append(Chat(name:"Vlad Maximov", date: "", lastMessage: Message(message: "Gread Britan is the capital of Great Britania"), isOnline: false, dateLastMessage: 10 , isRead: true ))
-        
-        self.dataChat.append(Chat(name:"Julian Vladimirov", date: "", lastMessage: Message(), isOnline: true, dateLastMessage: 400, isRead: true ) )
-        
-        self.dataHistory.append(Chat(name:"Julian Vladimirov", date: "", lastMessage: Message(message: "Maxim Maxim"), isOnline: false, dateLastMessage: 400, isRead: true ) )
-        self.dataHistory.append(Chat(name:"Julian Vladimirov", date: "", lastMessage: Message(message:"Maxim Danko"), isOnline: true, dateLastMessage: 400, isRead: true ) )
-        self.dataHistory.append(Chat(name:"Julian Vladimirov", date: "", lastMessage: Message(message:"Maxim Maxim Maxim"), isOnline: false, dateLastMessage: 400, isRead: true ) )
-        
-        
+        communicationManager.delegate = self
+    }
+
+    private func deleteUserFromTable(byUserID:String) {
+        if let _ = self.arrayUsers[byUserID] {
+            if let i = self.arrayUsersAtIndexPath.index(where: { $0 == byUserID }) {
+                self.arrayUsersAtIndexPath.remove(at: i)
+                self.arrayUsers.removeValue(forKey: byUserID)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
-    
-    func prepareData() {
-        
-
-
+    func conversationViewController(lostUser withID: String) {
+        self.deleteUserFromTable(byUserID: withID)
     }
     
+    func communicationManager(lostUser userID: String) {
+        self.deleteUserFromTable(byUserID: userID)
+    }
+    
+    func communicationManager(foundUser userID: String, withUserName: String?) {
+        let user = Chat(name: withUserName!, lastMessage: Message(), isOnline: true, dateLastMessage: Date().timeIntervalSinceNow, isRead: true, userID: userID)
+        self.arrayUsers[userID] = user
+        self.arrayUsersAtIndexPath.append(userID)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func communicationManager(receiveMessage message: String, fromUser userId: String) {
+        if let user = arrayUsers[userId] {
+            user.lastMessage = Message(message: message, fromTo: 2)
+            user.isRead = false
+            arrayUsers[userId] = user
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -73,36 +82,27 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
         if section % 2 == 0 {
             return "Online"
         } else {
-        
             return "History"
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section % 2 == 0 {
-            return self.dataChat.count
+            return self.arrayUsersAtIndexPath.count
         } else {
             return self.dataHistory.count
         }
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {}
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "ConversationsViewController", let destination = segue.destination as? ConversationViewController {
-            
             if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                
-                destination.messages.append(Message(message: "1"))
-                destination.messages.append(Message(message: "ghbdtn fkgdjkfs lkdfksdl  kfjdk"))
-                destination.messages.append(Message(message: "ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfksdl  kfjdk ghbdtn fkgdjkfs lkdfk"))
-                
-                destination.navigationItem.title = self.dataChat[indexPath.row].name
-                
+                let userID = self.arrayUsersAtIndexPath[indexPath.row]
+                destination.userID = userID
+                destination.navigationItem.title = self.arrayUsers[userID]?.name
+                destination.delegate = self
             }
         }
     }
@@ -110,23 +110,25 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if indexPath.section % 2 == 0 {
+            let userID = self.arrayUsersAtIndexPath[indexPath.row]
+            
             let cell = tableView.dequeueReusableCell(withIdentifier: cellId) as! ConversationTableViewCell
             
             cell.imageProfile.layer.cornerRadius = 25
             
             cell.imageProfile.layer.masksToBounds = true
             
-            cell.name.text = self.dataChat[indexPath.row].name
+            cell.name.text = self.arrayUsers[userID]?.name
             
-            cell.lastMessage.text = self.dataChat[indexPath.row].lastMessage.getMessage()
+            cell.lastMessage.text = self.arrayUsers[userID]?.lastMessage.getMessage()
             
-            cell.dateOfLastMessage.text = self.dataChat[indexPath.row].dateLastMessage?.timeAgoDisplay()
+            cell.dateOfLastMessage.text = self.arrayUsers[userID]?.dateLastMessage?.timeAgoDisplay()
             
-            if self.dataChat[indexPath.row].isOnline {
+            if (self.arrayUsers[userID]?.isOnline)! {
                 cell.backgroundColor = UIColor.yellow
             }
             
-            if self.dataChat[indexPath.row].isRead {
+            if (self.arrayUsers[userID]?.isRead)! {
                 cell.lastMessage.font =  UIFont.boldSystemFont(ofSize: 16.0)
             }
             
@@ -159,9 +161,7 @@ class ConversationsListViewController: UIViewController, UITableViewDataSource, 
             cell.isUserInteractionEnabled = false 
             
             return cell
-
         }
     }
-    
-
 }
+ 
